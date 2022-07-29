@@ -13,8 +13,7 @@ PORT = 8080
 
 
 def start(hostname, port):
-    """Start SenfServer with given hostname and port
-    """
+    """Start SenfServer with given hostname and port"""
     # Initialize and start server
     main_server = HTTPServer((HOSTNAME, PORT), SenfServer)
     main_server.serve_forever()

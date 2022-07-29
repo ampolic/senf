@@ -11,24 +11,21 @@ WEB_ROOT = "public_html/"
 
 
 class SenfServer(SimpleHTTPRequestHandler):
-    """HTTP Server that can accept POST requests
-    """
+    """HTTP Server that can accept POST requests"""
 
     def __init__(self, *args, **kwargs):
-        """Initialization of server that changes the web root
-        """
+        """Initialization of server that changes the web root"""
         super().__init__(*args, **kwargs, directory=WEB_ROOT)
 
     def do_POST(self):
-        """Function to handle POST requests
-        """
+        """Function to handle POST requests"""
 
         # Set environ and get form data
-        environ = {'REQUEST_METHOD': 'POST',
-                   'CONTENT_TYPE': self.headers['Content-Type']}
-        form = cgi.FieldStorage(fp=self.rfile,
-                                headers=self.headers,
-                                environ=environ)
+        environ = {
+            "REQUEST_METHOD": "POST",
+            "CONTENT_TYPE": self.headers["Content-Type"],
+        }
+        form = cgi.FieldStorage(fp=self.rfile, headers=self.headers, environ=environ)
 
         # Save form data
         response = save_form(form)
