@@ -1,9 +1,13 @@
+"""
+file: server.py
+
+This file contains the senf server
+"""
+
 import cgi
-from http.server import HTTPServer, SimpleHTTPRequestHandler
+from http.server import SimpleHTTPRequestHandler
 
 WEB_ROOT = "public_html/"
-HOSTNAME = "localhost"
-PORT = 8080
 
 
 class SenfServer(SimpleHTTPRequestHandler):
@@ -56,8 +60,3 @@ def save_form(form):
         f.write(_file)
 
     return f"Hi {fname} {lname}, I got your data!"
-
-
-# Start web server
-test_server = HTTPServer((HOSTNAME, PORT), SenfServer)
-test_server.serve_forever()
